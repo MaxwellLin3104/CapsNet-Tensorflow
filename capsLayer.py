@@ -52,7 +52,7 @@ class CapsLayer(object):
                 # NOTE: I can't find out any words from the paper whether the
                 # PrimaryCap convolution does a ReLU activation or not before
                 # squashing function, but experiment show that using ReLU get a
-                # higher test accuracy. So, which one to use will be your choice
+                # higher test accuracy. So, which one to use will be your choice  # # 这里直接 使用输出通道为 32x8， 然后 reshape。 等价于 在每个小胶囊中 设置8个kernel，然后有32个通道
                 capsules = tf.contrib.layers.conv2d(input, self.num_outputs * self.vec_len,
                                                     self.kernel_size, self.stride, padding="VALID",
                                                     activation_fn=tf.nn.relu)

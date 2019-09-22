@@ -7,11 +7,11 @@ import tensorflow as tf
 def load_mnist(batch_size, is_training=True):
     path = os.path.join('data', 'mnist')
     if is_training:
-        fd = open(os.path.join(path, 'train-images-idx3-ubyte'))
+        fd = open(os.path.join(path, 'train-images.idx3-ubyte'))
         loaded = np.fromfile(file=fd, dtype=np.uint8)
         trainX = loaded[16:].reshape((60000, 28, 28, 1)).astype(np.float32)
 
-        fd = open(os.path.join(path, 'train-labels-idx1-ubyte'))
+        fd = open(os.path.join(path, 'train-labels.idx1-ubyte'))
         loaded = np.fromfile(file=fd, dtype=np.uint8)
         trainY = loaded[8:].reshape((60000)).astype(np.int32)
 
@@ -26,11 +26,11 @@ def load_mnist(batch_size, is_training=True):
 
         return trX, trY, num_tr_batch, valX, valY, num_val_batch
     else:
-        fd = open(os.path.join(path, 't10k-images-idx3-ubyte'))
+        fd = open(os.path.join(path, 't10k-images.idx3-ubyte'))
         loaded = np.fromfile(file=fd, dtype=np.uint8)
         teX = loaded[16:].reshape((10000, 28, 28, 1)).astype(np.float)
 
-        fd = open(os.path.join(path, 't10k-labels-idx1-ubyte'))
+        fd = open(os.path.join(path, 't10k-labels.idx1-ubyte'))
         loaded = np.fromfile(file=fd, dtype=np.uint8)
         teY = loaded[8:].reshape((10000)).astype(np.int32)
 
